@@ -14,17 +14,19 @@
       vkBridge.send('VKWebAppInit');
     </script>
     <script>
-      bridge.send('VKWebAppShowNativeAds', {
-      ad_format: 'interstitial' /* Тип рекламы */
-      })
-      .then( (data) => { 
-        if (data.result) {
-          // Реклама была показана
-        } else {
-          // Ошибка
+        function Go() {
+          bridge.send('VKWebAppShowNativeAds', {
+          ad_format: 'interstitial' /* Тип рекламы */
+          })
+          .then( (data) => { 
+            if (data.result) {
+              // Реклама была показана
+            } else {
+              // Ошибка
+            }
+          })
+          .catch((error) => { console.log(error); });
         }
-      })
-      .catch((error) => { console.log(error); });
     </script>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
